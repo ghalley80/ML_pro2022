@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       body{
+        background:#B5838D;
+       
+       }
+       h1{
+        color:white;
+        margin-left:50px;
+        margin-top:100px;
+        font-size:55px;
+        
+       }
+        form{
+
+            display: flex;
+            width: 50%;
+            height:350px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left:25%;
+            
+        }
+        input{
+            padding-left:10px;
+            margin-top: 20px;
+            height:40px;
+            width:500px;
+            border-radius:5px;
+            border-color:white;
+            
+            
+        }
+        button {
+            border-radius:10px;
+            border-width:5px;
+            margin-top: 40px;
+            border: 2px solid white;
+            background: transparent;
+            text-transform: uppercase;
+            color: white;
+            padding: 18px 50px;
+            outline: none;
+            overflow: hidden;
+            position: relative;
+            transition: .3s ease;
+            cursor: pointer;
+            font-weight:600;
+            font-size:15px;
+          }
+          button:hover{
+              background: #B5838D;
+          }
+          span {
+            z-index: 20;  
+          }
+          button:after {
+            content: '';
+              display: block;
+              position: absolute;
+              top: -36px;
+              left: -100px;
+              background: white;
+              width: 50px;
+              height: 125px;
+              opacity: 25%;
+              transform: rotate(-45deg);
+          }
+          button:hover:after {
+            left: 120%;
+            transition: all .8s cubic-bezier(0.3, 1, 0.2, 1);
+             -webkit-transition: all .8s cubic-bezier(0.3, 1, 0.2, 1);
+          }
+          p{
+            color:white;
+            font-size:30px;
+            margin-left:400px;
+          }
+          h2{
+            color:white;
+            font-size: 20px;
+            margin-left:250px;
+            margin-right:250px;
+          }
+    </style>
+</head>
+<body>
+    
+    <h1>USD-to-Ngltrum Currency Exchange Rate Prediction</h1>
+    <h2>This website is created as a part of our group project for data analytic module. You will get idea of how much will be the exchnage rate of 1 USD in ngltrum.
+    </h2>
+    
+    
+    <form action="" method="post">
+        {% csrf_token%}
+        <input type="text" name="date" id="" placeholder="Please enter date here">
+        <input type="text" name="month" id="" placeholder="Please enter month here">
+        <input type="text" name="year" id="" placeholder="Please enter year here">
+        <button>PREDICT</button>
+    </form>
+   
+    <p>Current exchnage rate: 
+        {% if result %}
+            {{result}}
+        {% endif %}
+    </p>
+    
+</body>
+</html>
